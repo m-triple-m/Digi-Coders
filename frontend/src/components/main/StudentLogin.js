@@ -10,7 +10,6 @@ import { useUserContext } from "../../context/UserContext";
 const StudentLogin = () => {
 
   const navigate = useNavigate();
-  const { apiUrl } = app_config;
   const { setLoggedIn } = useUserContext();
 
   const [show, setShow] = useState(false);
@@ -29,7 +28,7 @@ const StudentLogin = () => {
     onSubmit: async (values, { setSubmitting }) => {
       console.log(values);
 
-      const res = await fetch(apiUrl + "/user/authenticate", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/user/authenticate`, {
         method: "POST",
         body: JSON.stringify(values), // this is used to convert js data in json formate
         headers: {

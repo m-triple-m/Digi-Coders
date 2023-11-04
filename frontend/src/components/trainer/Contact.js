@@ -5,7 +5,6 @@ import app_config from '../../config';
 
 const Contact = () => {
 
-    const { apiUrl } = app_config;
     const contactForm = useFormik({
         initialValues: {
             name: "",
@@ -17,7 +16,7 @@ const Contact = () => {
             console.log(values);
 
 
-            const res = await fetch(apiUrl + '/contact/add', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/contact/add`, {
                 method: 'POST',
                 body: JSON.stringify(values),
                 headers: {
@@ -26,12 +25,12 @@ const Contact = () => {
             });
 
             console.log(res.status);
+            setSubmitting(false);
             if (res.status === 200) {
                 Swal.fire({
                     icon: "success",
                     title: "Thank You!",
                     text: "Your message is successfully submitted",
-                    icon: 'success',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -133,32 +132,32 @@ const Contact = () => {
                                                 <hr className="hr mb-4"></hr>
                                                 <div className='text-center'>
                                                     <button type="button" className="btn btn-floating text-white mx-1">
-                                                        <a href="" className="me-4 text-reset">
+                                                        <a href="#" className="me-4 text-reset">
                                                             <i className="fab fa-facebook-f" />
                                                         </a>
                                                     </button>
                                                     <button type="button" className="btn btn-floating text-white mx-1">
-                                                        <a href="" className="me-4 text-reset">
+                                                        <a href="#" className="me-4 text-reset">
                                                             <i className="fab fa-twitter" />
                                                         </a>
                                                     </button>
                                                     <button type="button" className="btn btn-floating text-white mx-1">
-                                                        <a href="" className="me-4 text-reset">
+                                                        <a href="#" className="me-4 text-reset">
                                                             <i className="fab fa-google" />
                                                         </a>
                                                     </button>
                                                     <button type="button" className="btn btn-floating text-white mx-1">
-                                                        <a href="" className="me-4 text-reset">
+                                                        <a href="#" className="me-4 text-reset">
                                                             <i className="fab fa-instagram" />
                                                         </a>
                                                     </button>
                                                     <button type="button" className="btn btn-floating text-white mx-1">
-                                                        <a href="" className="me-4 text-reset">
+                                                        <a href="#" className="me-4 text-reset">
                                                             <i className="fab fa-linkedin" />
                                                         </a>
                                                     </button>
                                                     <button type="button" className="btn btn-floating text-white mx-1">
-                                                        <a href="" className="me-4 text-reset">
+                                                        <a href="#" className="me-4 text-reset">
                                                             <i className="fab fa-github" />
                                                         </a>
                                                     </button>

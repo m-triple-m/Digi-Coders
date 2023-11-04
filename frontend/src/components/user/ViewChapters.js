@@ -3,7 +3,6 @@ import { NavLink, useParams } from "react-router-dom";
 import app_config from "../../config";
 
 const BrowseChapters = () => {
-  const { apiUrl } = app_config;
 
   const { chaptername } = useParams();
 
@@ -37,7 +36,7 @@ const BrowseChapters = () => {
   };
 
   const fetchUserData = async () => {
-    const res = await fetch("http://localhost:5000/chapter/getall");
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/getall`);
     console.log(res.status);
     const data = await res.json();
     console.log(data);
@@ -67,7 +66,7 @@ const BrowseChapters = () => {
                   data-mdb-ripple-color="light" style={{ width: "320px", height: "175px", backgroundSize: "cover", backgroundColor: "#e0e0e0" }}
                 >
                   <img
-                    src={apiUrl + "/" + chapter.icon}
+                    src={process.env.REACT_APP_API_URL + "/" + chapter.icon}
                     className="img-fluid"
                     alt=""
                   />

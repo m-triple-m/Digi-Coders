@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useTrainerContext } from '../../context/TrainerContext';
 
 const Navbar = () => {
@@ -70,25 +70,25 @@ const Navbar = () => {
                         {
                             !loggedIn ? (
                                 <>
-                                    <a
+                                    <Link
                                         class="nav-btn btn-link"
-                                        href="/main/signup"
+                                        to="/main/signup"
                                     >
                                         <i
                                             className="fas fa-user fa-lg me-1 fa-fw"
                                         />
                                         Sign Up
-                                    </a>
+                                    </Link>
 
-                                    <a
+                                    <Link
                                         class="nav-btn btn-link"
-                                        href="/main/login"
+                                        to="/main/login"
                                     >
                                         <i
                                             className="fas fa-right-to-bracket fa-lg me-1 fa-fw"
                                         />
                                         Login
-                                    </a>
+                                    </Link>
                                 </>
                             ) :
                                 (

@@ -58,7 +58,6 @@ const getLangugage = (category) => {
 
 const ChapterDetails = () => {
   const { id } = useParams();
-  const { apiUrl } = app_config;
   const [workspace, setWorkspace] = useState(null);
 
   const [showOutputCard, setShowOutputCard] = useState(false);
@@ -81,7 +80,7 @@ const ChapterDetails = () => {
   
   
   const fetchChapterData = async () => {
-    const res = await fetch(apiUrl + '/chapter/getbyid/' + id);
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/getbyid/` + id);
     console.log(res.status);
     const data = await res.json();
     console.log(data);
@@ -111,7 +110,7 @@ const ChapterDetails = () => {
                         data-mdb-ripple-color="light"
                         style={{ width: '320px', height: '175px', backgroundSize: 'cover', backgroundColor: "#e0e0e0" }}
                       >
-                        <img src={apiUrl + '/' + chapterDetails.icon} className="img-fluid" />
+                        <img src={`${process.env.REACT_APP_API_URL}/` + chapterDetails.icon} className="img-fluid" />
                       </div>
                     </div>
                     <div className="content col-md-6 text-justify mx-4">

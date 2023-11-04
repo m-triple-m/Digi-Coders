@@ -1,5 +1,6 @@
 import { useFormik } from 'formik'
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 const Signup = () => {
@@ -19,9 +20,9 @@ const Signup = () => {
             <div className='signup-link'>
               <p className="text-center fw-bold mb-8">
                 Already have an account?{" "}
-                <a href="/main/login" className="fw-bold text-body">
+                <Link to="/main/login" className="fw-bold text-body">
                   <u>Login here</u>
-                </a>
+                </Link>
               </p>
             </div>
 
@@ -29,22 +30,22 @@ const Signup = () => {
               {/* First column */}
               <div className="col-lg-4">
                 <div class="hover-zoom">
-                  <a href="/main/studentsignup">
+                  <Link to="/main/studentsignup">
                     <img
                       src="/icons/student_icon.jpg"
                       className="card-signup w-100 mb-n5 shadow-5-strong"
                       style={{ maxWidth: 100 }}
                       alt="Avatar"
                     />
-                  </a>
+                  </Link>
                   <div
                     className="card-signup p-4 shadow-3"
                     style={{ backgroundColor: "hsl(218, 62.2%, 95%)" }}
                   >
                     <div className="signup-name">
-                      <a href="/main/studentsignup">
+                      <Link to="/main/studentsignup">
                         <p className="h5 fw-bold mt-5">Student</p>
-                      </a>
+                      </Link>
                     </div>
                     {/* Divider here */}
                     <hr class="hr hr-blurry"></hr>
@@ -56,22 +57,22 @@ const Signup = () => {
               {/* second column */}
               <div className="col-lg-4">
                 <div class="hover-zoom">
-                  <a href="/main/trainersignup">
+                  <Link to="/main/trainersignup">
                     <img
                       src="/icons/teacher_icon.jpg"
                       className="card-signup w-100 mb-n5 shadow-5-strong"
                       style={{ maxWidth: 100 }}
                       alt="Avatar"
                     />
-                  </a>
+                  </Link>
                   <div
                     className="card-signup p-4 shadow-3"
                     style={{ backgroundColor: "hsl(218, 62.2%, 95%)" }}
                   >
                     <div className="signup-name">
-                      <a href="/main/trainersignup">
+                      <Link to="/main/trainersignup">
                         <p className="h5 fw-bold mt-5">Teacher</p>
-                      </a>
+                      </Link>
                     </div>
 
                     {/* Divider here */}

@@ -16,32 +16,32 @@ export const Footer = () => {
           {/* Right */}
           <div>
             <button type="button" className="btn btn-floating text-white mx-1">
-              <a href="" className="me-4 text-reset">
+              <a href="#" className="me-4 text-reset">
                 <i className="fab fa-facebook-f" />
               </a>
             </button>
             <button type="button" className="btn btn-floating text-white mx-1">
-              <a href="" className="me-4 text-reset">
+              <a href="#" className="me-4 text-reset">
                 <i className="fab fa-twitter" />
               </a>
             </button>
             <button type="button" className="btn btn-floating text-white mx-1">
-              <a href="" className="me-4 text-reset">
+              <a href="#" className="me-4 text-reset">
                 <i className="fab fa-google" />
               </a>
             </button>
             <button type="button" className="btn btn-floating text-white mx-1">
-              <a href="" className="me-4 text-reset">
+              <a href="#" className="me-4 text-reset">
                 <i className="fab fa-instagram" />
               </a>
             </button>
             <button type="button" className="btn btn-floating text-white mx-1">
-              <a href="" className="me-4 text-reset">
+              <a href="#" className="me-4 text-reset">
                 <i className="fab fa-linkedin" />
               </a>
             </button>
             <button type="button" className="btn btn-floating text-white mx-1">
-              <a href="" className="me-4 text-reset">
+              <a href="#" className="me-4 text-reset">
                 <i className="fab fa-github" />
               </a>
             </button>

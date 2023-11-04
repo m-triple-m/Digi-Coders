@@ -35,7 +35,7 @@ const ResetPassword = () => {
 
 
   const sendOTP = () => {
-    fetch('http://localhost:5000/util/sendmail', {
+    fetch(`${process.env.REACT_APP_API_URL}/util/sendmail`, {
       method: 'POST',
       body: JSON.stringify({
         to: email,
@@ -60,7 +60,7 @@ const ResetPassword = () => {
   };
 
   const verifyUser = () => {
-    fetch('http://localhost:5000/user/getbyemail/' + email)
+    fetch(`${process.env.REACT_APP_API_URL}/user/getbyemail` + email)
       .then((res) => {
         return res.json();
       })
@@ -96,7 +96,7 @@ const ResetPassword = () => {
   };
   const resetPassword = ({ password }) => {
     console.log(password);
-    fetch('http://localhost:5000/user/update/' + currentUser._id, {
+    fetch(`${process.env.REACT_APP_API_URL}/user/update` + currentUser._id, {
       method: 'PUT',
       body: JSON.stringify({ password: password }),
       headers: { 'Content-Type': 'application/json' }

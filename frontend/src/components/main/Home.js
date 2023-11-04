@@ -6,7 +6,6 @@ import app_config from '../../config';
 
 const Home = () => {
 
-  const { apiUrl } = app_config;
 
   const [selectedEmoji, setSelectedEmoji] = useState('');
 
@@ -26,7 +25,7 @@ const Home = () => {
       console.log(values);
 
 
-      const res = await fetch(apiUrl + '/contact/add', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/contact/add`, {
         method: 'POST',
         body: JSON.stringify(values),
         headers: {

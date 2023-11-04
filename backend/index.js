@@ -13,7 +13,7 @@ const utilRouter = require('./routers/util');
 const cors = require( 'cors');
 
 app.use(cors({
-    origin: ['http://localhost:3000']
+    origin: ['*']
 }));
 
 //convert(parse) json data
@@ -28,7 +28,7 @@ app.use('/util', utilRouter);
 
 app.use(express.static('./static/uploads'));
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 app.get('/', (req, res) => {      
     res.send('Working Perfectly');    //get is used for searching somethig because data is not hidden

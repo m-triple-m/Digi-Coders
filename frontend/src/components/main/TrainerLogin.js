@@ -12,7 +12,6 @@ import { useTrainerContext } from "../../context/TrainerContext";
 const TrainerLogin = () => {
 
   const navigate = useNavigate();
-  const { apiUrl } = app_config;
   const { setLoggedIn } = useTrainerContext();
 
   const [show, setShow] = useState(false);
@@ -31,7 +30,7 @@ const TrainerLogin = () => {
     onSubmit: async (values, { setSubmitting }) => {
       console.log(values);
 
-      const res = await fetch(apiUrl + "/trainer/authenticate", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/trainer/authenticate`, {
         method: "POST",
         body: JSON.stringify(values), // this is used to convert js data in json formate
         headers: {
@@ -40,6 +39,7 @@ const TrainerLogin = () => {
       });
       // hello f
       console.log(res.status);
+      setSubmitting(false);
       if (res.status === 200) {
         Swal.fire({
           icon: "success",

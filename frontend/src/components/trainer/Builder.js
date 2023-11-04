@@ -17,7 +17,6 @@ import CustomBlock from "../../MyCustomBlocks";
 
 const Builder = () => {
   const { chapter_id } = useParams();
-  const { apiUrl, blockData } = app_config;
 
   const [currentUser, setCurrentUser] = useState(
     JSON.parse(sessionStorage.getItem("trainer"))
@@ -36,7 +35,7 @@ const Builder = () => {
 
   const fetchChapterData = async () => {
     setLoading(true);
-    const res = await fetch(`${apiUrl}/chapter/getbyid/${chapter_id}`);
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/getbyid/${chapter_id}`);
     const data = await res.json();
     setChapterData(data.result);
     setLoading(false);
@@ -57,7 +56,7 @@ const Builder = () => {
   };
 
   const updateChapter = async () => {
-    const res = await fetch(`${apiUrl}/chapter/update/${chapterData._id}`, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/update/${chapterData._id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

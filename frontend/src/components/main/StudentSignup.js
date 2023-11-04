@@ -11,7 +11,6 @@ import { useUserContext } from '../../context/UserContext';
 const StudentSignup = () => {
 
     const navigate = useNavigate();
-    const { apiUrl } = app_config;
 
     const [selImage, setSelImage] = useState(null);
 
@@ -51,7 +50,7 @@ const StudentSignup = () => {
             values.avatar = selImage.name;
             console.log(values);
 
-            const res = await fetch(apiUrl + '/user/add', {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/user/add`, {
                 method: 'POST',
                 body: JSON.stringify(values),
                 headers: {
@@ -89,7 +88,7 @@ const StudentSignup = () => {
         const fd = new FormData();
         setSelImage(file);
         fd.append('myfile', file);
-        fetch(apiUrl + '/util/uploadfile', {
+        fetch(`${process.env.REACT_APP_API_URL}/util/uploadfile`, {
             method: 'POST',
             body: fd
         }).then((res) => {
@@ -107,7 +106,7 @@ const StudentSignup = () => {
 
     const saveGoogleUser = async (googleObj) => {
         setAvatar(googleObj.picture);
-        const response = await fetch(apiUrl + "/user/add", {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}/user/add`, {
             method: "POST",
             body: JSON.stringify({
                 username: googleObj.name,

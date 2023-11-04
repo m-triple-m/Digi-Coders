@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 
 const TrainerProfile = () => {
 
-    const { apiUrl } = app_config;
 
     const [selImage, setSelImage] = useState(null);
 
@@ -43,7 +42,7 @@ const TrainerProfile = () => {
         },
         onSubmit: async (values, { setSubmitting }) => {
             console.log(values);
-            const res = await fetch(apiUrl + "/trainer/update/" + currentTrainer._id, {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/trainer/update/` + currentTrainer._id, {
                 method: "PUT",
                 body: JSON.stringify(values), // this is used to convert js data in json formate
                 headers: {
@@ -81,7 +80,7 @@ const TrainerProfile = () => {
         const fd = new FormData();
         setSelImage(file);
         fd.append('myfile', file);
-        fetch(apiUrl + '/util/uploadfile', {
+        fetch(`${process.env.REACT_APP_API_URL}/util/uploadfile`, {
             method: 'POST',
             body: fd
         }).then((res) => {

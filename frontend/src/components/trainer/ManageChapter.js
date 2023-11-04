@@ -6,7 +6,6 @@ import app_config from '../../config';
 import { NavLink, useParams } from 'react-router-dom';
 
 const ManageChapter = () => {
-  const { apiUrl } = app_config;
   const { chaptername } = useParams();
 
   const itemPerPage = 5;
@@ -16,7 +15,7 @@ const ManageChapter = () => {
   const [chapterList, setChapterList] = useState([]);
 
   const fetchUserData = async () => {
-    const res = await fetch(apiUrl + '/chapter/getall');
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/getall`);
     console.log(res.status);
     const data = await res.json();
     console.log(data);
@@ -29,8 +28,8 @@ const ManageChapter = () => {
   };
 
   const deleteChapter = async (id) => {
-    const res = await fetch(apiUrl + '/chapter/delete/' + id, {
-      method: 'DELETE',
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/delete/` + id, {
+      method: 'DELETE'
     });
     const data = await res.json();
     console.log(data);
@@ -38,30 +37,28 @@ const ManageChapter = () => {
       Swal.fire({
         title: 'Chapter Deleted Successfully',
         icon: 'success',
-        timer: 2000,
+        timer: 2000
       });
       fetchUserData();
     } else {
       Swal.fire({
         title: 'Chapter Deletion Failed',
         icon: 'error',
-        timer: 2000,
+        timer: 2000
       });
     }
-  }
+  };
 
   const searchChapterByName = (e) => {
     const val = e.target.value;
-    setChapterList(
-      masterList.filter((chapter) => (chapter.title.toLowerCase().includes(val.toLowerCase())))
-    )
+    setChapterList(masterList.filter((chapter) => chapter.title.toLowerCase().includes(val.toLowerCase())));
     setCurrentPage(1);
-  }
+  };
 
   const displayChapters = () => {
     return (
       <div>
-        <section className="" style={{ backgroundColor: "#aedff3" }}>
+        <section className="" style={{ backgroundColor: '#aedff3' }}>
           <div className="container">
             <div className="">
               <div className="card-body text-white">
@@ -77,12 +74,12 @@ const ManageChapter = () => {
                           className="form-control form-control-lg"
                           placeholder="Search"
                           onChange={searchChapterByName}
-                          style={{ paddingRight: "10px", width: "350px" }}
+                          style={{ paddingRight: '10px', width: '350px' }}
                         />
                       </div>
                     </div>
                   </div>
-                  <div className='col-md-6 px-5'>
+                  <div className="col-md-6 px-5">
                     <div className="d-flex justify-content-end">
                       <button type="button" className="btn btn-primary btn-rounded" data-mdb-toggle="modal" data-mdb-target="#staticBackdrop1">
                         <i className="fas fa-plus me-2" />
@@ -102,7 +99,7 @@ const ManageChapter = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="exampleModalLabel1">
-                   Create New Chapter
+                  Create New Chapter
                 </h5>
                 <button type="button" className="btn-close" data-mdb-dismiss="modal" aria-label="Close" />
               </div>
@@ -150,19 +147,17 @@ const ManageChapter = () => {
                     />
                   </div>
 
-                  <div className='d-flex flex-row align-items-center mx-1 mb-4'>
+                  <div className="d-flex flex-row align-items-center mx-1 mb-4">
                     <label htmlFor="chapter-img" className="btn btn-primary">
                       {' '}
                       <i class="fas fa-upload"></i> Upload Image
                     </label>
-                    <span className='text-warning mx-3'>
-                      {selImage ? selImage.name : 'No Image Selected'}
-                    </span>
+                    <span className="text-warning mx-3">{selImage ? selImage.name : 'No Image Selected'}</span>
                     <input type="file" accept=".jpg,.jpeg,.png" id="chapter-img" hidden onChange={uploadFile} />
                   </div>
-                  
+
                   {/* Send button */}
-                  <button className="btn btn-primary btn-block mt-5" type="submit" style={{ marginLeft: "0px" }}>
+                  <button className="btn btn-primary btn-block mt-5" type="submit" style={{ marginLeft: '0px' }}>
                     SUBMIT
                   </button>
                 </form>
@@ -193,8 +188,12 @@ const ManageChapter = () => {
                 <td className="align-middle">{chapter.title}</td>
                 <td className="align-middle">
                   <div className="">
-                    <div class="bg-image hover-overlay ripple shadow-4-strong rounded-7 mx-2 my-2" data-mdb-ripple-color="light" style={{ width: "200px", height: "110px", backgroundSize: "cover", backgroundColor: "#e0e0e0"}}>
-                      <img src={apiUrl + '/' + chapter.icon} className="img-fluid"/>
+                    <div
+                      class="bg-image hover-overlay ripple shadow-4-strong rounded-7 mx-2 my-2"
+                      data-mdb-ripple-color="light"
+                      style={{ width: '200px', height: '110px', backgroundSize: 'cover', backgroundColor: '#e0e0e0' }}
+                    >
+                      <img src={process.env.REACT_APP_API_URL + '/' + chapter.icon} className="img-fluid" />
                     </div>
                   </div>
                 </td>
@@ -203,13 +202,13 @@ const ManageChapter = () => {
                 <td className="align-middle">{new Date(chapter.created_at).toLocaleDateString()}</td>
                 <td className="align-middle">{new Date(chapter.updated_at).toLocaleDateString()}</td>
                 <td className="align-middle">
-                  <NavLink to={'/trainer/designchapter/' + chapter._id} >
-                    <i className="fas fa-pen-to-square fa-lg mx-2" style={{ color: "#000fff" }} />
+                  <NavLink to={'/trainer/designchapter/' + chapter._id}>
+                    <i className="fas fa-pen-to-square fa-lg mx-2" style={{ color: '#000fff' }} />
                   </NavLink>
                 </td>
                 <td className="align-middle">
-                  <button className='' onClick={e => deleteChapter(chapter._id)} style={{border: "none", background: "none"}}>
-                    <i className="fas fa-trash-can fa-lg mx-2" style={{ color: "#ff0000"}} />
+                  <button className="" onClick={(e) => deleteChapter(chapter._id)} style={{ border: 'none', background: 'none' }}>
+                    <i className="fas fa-trash-can fa-lg mx-2" style={{ color: '#ff0000' }} />
                   </button>
                 </td>
               </tr>
@@ -316,7 +315,7 @@ const ManageChapter = () => {
     const fd = new FormData();
     setSelImage(file);
     fd.append('myfile', file);
-    fetch(apiUrl + '/util/uploadfile', {
+    fetch(`${process.env.REACT_APP_API_URL}/util/uploadfile`, {
       method: 'POST',
       body: fd
     }).then((res) => {

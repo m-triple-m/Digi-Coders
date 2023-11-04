@@ -20,7 +20,6 @@ const getToolbox = (category) => {
 
 const DesignChapter = () => {
   const { id } = useParams();
-  const { apiUrl } = app_config;
 
   const [chapterDetails, setChapterDetails] = useState(null);
 
@@ -33,7 +32,7 @@ const DesignChapter = () => {
   </xml>`);
 
   const fetchChapterData = async () => {
-    const res = await fetch(apiUrl + '/chapter/getbyid/' + id);
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/getbyid/` + id);
     console.log(res.status);
     const data = await res.json();
     console.log(data);
@@ -49,7 +48,7 @@ const DesignChapter = () => {
     console.log(selBlocks);
     // return;
 
-    const res = await fetch(apiUrl + '/chapter/update/' + id, {
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/chapter/update/` + id, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -183,7 +182,7 @@ const DesignChapter = () => {
                   <div className="row d-flex align-items-center justify-content-center">
                     <div className="col-md-6 col-lg-4 mx-4" style={{width: "26%"}}>
                       <div class="bg-image hover-overlay ripple shadow-4-strong rounded-7" data-mdb-ripple-color="light" style={{ width: "320px", height: '175px', backgroundSize: "cover", backgroundColor: "#e0e0e0" }}>
-                        <img src={apiUrl + '/' + chapterDetails.icon} className="img-fluid" />
+                        <img src={process.env.REACT_APP_API_URL + '/' + chapterDetails.icon} className="img-fluid" alt="" />
                       </div>
                     </div>
                     <div className="content col-md-6 text-justify mx-4">

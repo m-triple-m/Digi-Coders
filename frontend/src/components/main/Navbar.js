@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useUserContext } from '../../context/UserContext';
 
 const Navbar = () => {
@@ -101,25 +101,25 @@ const Navbar = () => {
             {
               !loggedIn ? (
                 <>
-                  <a
-                    class="nav-btn btn-link"
-                    href="/main/signup"
+                  <Link
+                    className="nav-btn btn-link"
+                    to="/main/signup"
                   >
                     <i
                       className="fas fa-user fa-lg me-1 fa-fw"
                     />
                     Sign Up
-                  </a>
+                  </Link>
 
-                  <a
-                    class="nav-btn btn-link"
-                    href="/main/login"
+                  <Link
+                    className="nav-btn btn-link"
+                    to="/main/login"
                   >
                     <i
                       className="fas fa-right-to-bracket fa-lg me-1 fa-fw"
                     />
                     Login
-                  </a>
+                  </Link>
                 </>
               ) :
                 (

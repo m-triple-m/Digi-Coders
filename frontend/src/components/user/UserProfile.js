@@ -7,7 +7,6 @@ import { NavLink } from 'react-router-dom';
 
 const UserProfile = () => {
 
-    const { apiUrl } = app_config;
 
     const [selImage, setSelImage] = useState(null);
 
@@ -40,7 +39,7 @@ const UserProfile = () => {
         },
         onSubmit: async (values, { setSubmitting }) => {
             console.log(values);
-            const res = await fetch(apiUrl + "/user/update/" + currentUser._id, {
+            const res = await fetch(`${process.env.REACT_APP_API_URL}/user/update` + currentUser._id, {
                 method: "PUT",
                 body: JSON.stringify(values), // this is used to convert js data in json formate
                 headers: {
@@ -48,6 +47,7 @@ const UserProfile = () => {
                 },
             });
             console.log(res.status);
+            setSubmitting(false);
             if (res.status === 200) {
                 const data = await res.json();
                 console.log(data);
@@ -78,7 +78,7 @@ const UserProfile = () => {
         const fd = new FormData();
         setSelImage(file);
         fd.append('myfile', file);
-        fetch(apiUrl + '/util/uploadfile', {
+        fetch(`${process.env.REACT_APP_API_URL}/util/uploadfile`, {
             method: 'POST',
             body: fd
         }).then((res) => {
