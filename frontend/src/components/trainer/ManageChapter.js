@@ -293,6 +293,7 @@ const ManageChapter = () => {
       console.log(res.status);
 
       if (res.status === 200) {
+        fetchUserData();
         Swal.fire({
           icon: 'success',
           title: 'Your work has been saved',
