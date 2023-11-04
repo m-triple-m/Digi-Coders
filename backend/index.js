@@ -13,7 +13,7 @@ const utilRouter = require('./routers/util');
 const cors = require( 'cors');
 
 app.use(cors({
-    origin: ['*']
+    origin: '*'
 }));
 
 //convert(parse) json data
