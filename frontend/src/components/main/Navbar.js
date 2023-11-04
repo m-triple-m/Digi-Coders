@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useUserContext } from '../../context/UserContext';
+import { useTrainerContext } from '../../context/TrainerContext';
 
 const Navbar = () => {
 
   const { loggedIn, logout } = useUserContext();
+  // const tCOn = useTrainerContext();
 
   return (
 
@@ -90,6 +92,11 @@ const Navbar = () => {
                   Contact
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/trainer/trainerprofile">
+                  Trainer
+                </NavLink>
+              </li>
 
             </ul>
 
@@ -142,7 +149,7 @@ const Navbar = () => {
                         aria-expanded="false"
                       >
                         <NavLink className='nav-avatar align-items-center ms-2'>
-                          Mohit Mishra
+                          
                           <i className="fas fa-caret-down ms-2" />
                         </NavLink>
                       </NavLink>
