@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { useTrainerContext } from '../../context/TrainerContext';
+import { useState } from 'react';
 
 const Navbar = () => {
 
     const { loggedIn, logout } = useTrainerContext();
+    const [currentUser, setCurrentUser] = useState(JSON.parse(sessionStorage.getItem("trainer")));
 
     return (
         <>
@@ -111,7 +113,7 @@ const Navbar = () => {
                                                 aria-expanded="false"
                                             >
                                                 <NavLink className='nav-avatar align-items-center ms-2'>
-                                                    Mohit Mishra
+                                                    {currentUser.name}
                                                     <i className="fas fa-caret-down ms-2" />
                                                 </NavLink>
                                             </NavLink>
